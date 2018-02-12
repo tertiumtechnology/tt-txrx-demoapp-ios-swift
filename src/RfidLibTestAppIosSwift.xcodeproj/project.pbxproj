@@ -1,0 +1,448 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7B66D7E11F828D090007CFB7 /* SocketHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B66D7DF1F828D080007CFB7 /* SocketHandler.swift */; };
+		7B66D7E21F828D090007CFB7 /* SocketDataProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B66D7E01F828D090007CFB7 /* SocketDataProtocol.swift */; };
+		7B93FD4F2031BEE60006F462 /* TxRxDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B93FD462031BEE60006F462 /* TxRxDevice.swift */; };
+		7B93FD502031BEE60006F462 /* TxRxManagerPhases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B93FD472031BEE60006F462 /* TxRxManagerPhases.swift */; };
+		7B93FD512031BEE60006F462 /* TxRxWatchDogTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B93FD482031BEE60006F462 /* TxRxWatchDogTimer.swift */; };
+		7B93FD522031BEE60006F462 /* TxRxManagerTimeouts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B93FD492031BEE60006F462 /* TxRxManagerTimeouts.swift */; };
+		7B93FD532031BEE60006F462 /* TxRxDeviceProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B93FD4A2031BEE60006F462 /* TxRxDeviceProfile.swift */; };
+		7B93FD542031BEE60006F462 /* TxRxManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B93FD4B2031BEE60006F462 /* TxRxManager.swift */; };
+		7B93FD552031BEE60006F462 /* TxRxDeviceScanProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B93FD4C2031BEE60006F462 /* TxRxDeviceScanProtocol.swift */; };
+		7B93FD562031BEE60006F462 /* TxRxDeviceDataProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B93FD4D2031BEE60006F462 /* TxRxDeviceDataProtocol.swift */; };
+		7B93FD572031BEE60006F462 /* TxRxManagerErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B93FD4E2031BEE60006F462 /* TxRxManagerErrors.swift */; };
+		923724AF1F81D894009D62E6 /* DeviceDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923724AE1F81D894009D62E6 /* DeviceDetailViewController.swift */; };
+		923724B11F81DDAE009D62E6 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923724B01F81DDAE009D62E6 /* SettingsViewController.swift */; };
+		923724BB1F81E9E3009D62E6 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 923724BA1F81E9E3009D62E6 /* GCDAsyncSocket.m */; };
+		927E09E51F743473009573FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927E09E41F743473009573FF /* AppDelegate.swift */; };
+		927E09EA1F743473009573FF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 927E09E81F743473009573FF /* Main.storyboard */; };
+		927E09EC1F743473009573FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 927E09EB1F743473009573FF /* Assets.xcassets */; };
+		927E09EF1F743473009573FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 927E09ED1F743473009573FF /* LaunchScreen.storyboard */; };
+		9295BBB11F81A29000D09B13 /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9295BBB01F81A29000D09B13 /* ScanViewController.swift */; };
+		9295BBB41F81A46A00D09B13 /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9295BBB31F81A46A00D09B13 /* Core.swift */; };
+		9295BBB61F81AB9800D09B13 /* BleTableViewHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9295BBB51F81AB9800D09B13 /* BleTableViewHeaderCell.swift */; };
+		9295BBB81F81ABAE00D09B13 /* BleTableViewDeviceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9295BBB71F81ABAD00D09B13 /* BleTableViewDeviceCell.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		7B66D7DF1F828D080007CFB7 /* SocketHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SocketHandler.swift; path = Socket/SocketHandler.swift; sourceTree = "<group>"; };
+		7B66D7E01F828D090007CFB7 /* SocketDataProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SocketDataProtocol.swift; path = Socket/SocketDataProtocol.swift; sourceTree = "<group>"; };
+		7B66D7E41F828D4D0007CFB7 /* RfidLibTestAppIosSwift-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RfidLibTestAppIosSwift-Bridging-Header.h"; sourceTree = "<group>"; };
+		7B93FD462031BEE60006F462 /* TxRxDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TxRxDevice.swift; path = "tt-txrx-lib-ios-swift/src/TxRxDevice.swift"; sourceTree = SOURCE_ROOT; };
+		7B93FD472031BEE60006F462 /* TxRxManagerPhases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TxRxManagerPhases.swift; path = "tt-txrx-lib-ios-swift/src/TxRxManagerPhases.swift"; sourceTree = SOURCE_ROOT; };
+		7B93FD482031BEE60006F462 /* TxRxWatchDogTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TxRxWatchDogTimer.swift; path = "tt-txrx-lib-ios-swift/src/TxRxWatchDogTimer.swift"; sourceTree = SOURCE_ROOT; };
+		7B93FD492031BEE60006F462 /* TxRxManagerTimeouts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TxRxManagerTimeouts.swift; path = "tt-txrx-lib-ios-swift/src/TxRxManagerTimeouts.swift"; sourceTree = SOURCE_ROOT; };
+		7B93FD4A2031BEE60006F462 /* TxRxDeviceProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TxRxDeviceProfile.swift; path = "tt-txrx-lib-ios-swift/src/TxRxDeviceProfile.swift"; sourceTree = SOURCE_ROOT; };
+		7B93FD4B2031BEE60006F462 /* TxRxManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TxRxManager.swift; path = "tt-txrx-lib-ios-swift/src/TxRxManager.swift"; sourceTree = SOURCE_ROOT; };
+		7B93FD4C2031BEE60006F462 /* TxRxDeviceScanProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TxRxDeviceScanProtocol.swift; path = "tt-txrx-lib-ios-swift/src/TxRxDeviceScanProtocol.swift"; sourceTree = SOURCE_ROOT; };
+		7B93FD4D2031BEE60006F462 /* TxRxDeviceDataProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TxRxDeviceDataProtocol.swift; path = "tt-txrx-lib-ios-swift/src/TxRxDeviceDataProtocol.swift"; sourceTree = SOURCE_ROOT; };
+		7B93FD4E2031BEE60006F462 /* TxRxManagerErrors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TxRxManagerErrors.swift; path = "tt-txrx-lib-ios-swift/src/TxRxManagerErrors.swift"; sourceTree = SOURCE_ROOT; };
+		923724AE1F81D894009D62E6 /* DeviceDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DeviceDetailViewController.swift; path = GUI/DeviceDetailViewController.swift; sourceTree = "<group>"; };
+		923724B01F81DDAE009D62E6 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = GUI/SettingsViewController.swift; sourceTree = "<group>"; };
+		923724B81F81E9E2009D62E6 /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCDAsyncSocket.h; path = Foreign/GCDAsyncSocket.h; sourceTree = "<group>"; };
+		923724BA1F81E9E3009D62E6 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCDAsyncSocket.m; path = Foreign/GCDAsyncSocket.m; sourceTree = "<group>"; };
+		927E09E11F743473009573FF /* RfidLibTestAppIosSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RfidLibTestAppIosSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		927E09E41F743473009573FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		927E09E91F743473009573FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		927E09EB1F743473009573FF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		927E09EE1F743473009573FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		927E09F01F743473009573FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9295BBB01F81A29000D09B13 /* ScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ScanViewController.swift; path = GUI/ScanViewController.swift; sourceTree = "<group>"; };
+		9295BBB31F81A46A00D09B13 /* Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Core.swift; path = Core/Core.swift; sourceTree = "<group>"; };
+		9295BBB51F81AB9800D09B13 /* BleTableViewHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BleTableViewHeaderCell.swift; path = GUI/BleTableViewHeaderCell.swift; sourceTree = "<group>"; };
+		9295BBB71F81ABAD00D09B13 /* BleTableViewDeviceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BleTableViewDeviceCell.swift; path = GUI/BleTableViewDeviceCell.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		927E09DE1F743473009573FF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		923724B21F81E7F0009D62E6 /* Foreign */ = {
+			isa = PBXGroup;
+			children = (
+				7B66D7E41F828D4D0007CFB7 /* RfidLibTestAppIosSwift-Bridging-Header.h */,
+				923724B81F81E9E2009D62E6 /* GCDAsyncSocket.h */,
+				923724BA1F81E9E3009D62E6 /* GCDAsyncSocket.m */,
+			);
+			name = Foreign;
+			sourceTree = "<group>";
+		};
+		923724BC1F81EACB009D62E6 /* Socket */ = {
+			isa = PBXGroup;
+			children = (
+				7B66D7E01F828D090007CFB7 /* SocketDataProtocol.swift */,
+				7B66D7DF1F828D080007CFB7 /* SocketHandler.swift */,
+			);
+			name = Socket;
+			sourceTree = "<group>";
+		};
+		927E09D81F743473009573FF = {
+			isa = PBXGroup;
+			children = (
+				927E09E31F743473009573FF /* TestApp */,
+				927E09E21F743473009573FF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		927E09E21F743473009573FF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				927E09E11F743473009573FF /* RfidLibTestAppIosSwift.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		927E09E31F743473009573FF /* TestApp */ = {
+			isa = PBXGroup;
+			children = (
+				923724BC1F81EACB009D62E6 /* Socket */,
+				923724B21F81E7F0009D62E6 /* Foreign */,
+				927E09F61F7434A0009573FF /* TxRxLibIosSwift */,
+				9295BBB21F81A45300D09B13 /* Core */,
+				9295BBAF1F81A23B00D09B13 /* GUI */,
+				927E09E41F743473009573FF /* AppDelegate.swift */,
+				927E09E81F743473009573FF /* Main.storyboard */,
+				927E09EB1F743473009573FF /* Assets.xcassets */,
+				927E09ED1F743473009573FF /* LaunchScreen.storyboard */,
+				927E09F01F743473009573FF /* Info.plist */,
+			);
+			path = TestApp;
+			sourceTree = "<group>";
+		};
+		927E09F61F7434A0009573FF /* TxRxLibIosSwift */ = {
+			isa = PBXGroup;
+			children = (
+				7B93FD462031BEE60006F462 /* TxRxDevice.swift */,
+				7B93FD4D2031BEE60006F462 /* TxRxDeviceDataProtocol.swift */,
+				7B93FD4A2031BEE60006F462 /* TxRxDeviceProfile.swift */,
+				7B93FD4C2031BEE60006F462 /* TxRxDeviceScanProtocol.swift */,
+				7B93FD4B2031BEE60006F462 /* TxRxManager.swift */,
+				7B93FD4E2031BEE60006F462 /* TxRxManagerErrors.swift */,
+				7B93FD472031BEE60006F462 /* TxRxManagerPhases.swift */,
+				7B93FD492031BEE60006F462 /* TxRxManagerTimeouts.swift */,
+				7B93FD482031BEE60006F462 /* TxRxWatchDogTimer.swift */,
+			);
+			name = TxRxLibIosSwift;
+			sourceTree = "<group>";
+		};
+		9295BBAF1F81A23B00D09B13 /* GUI */ = {
+			isa = PBXGroup;
+			children = (
+				9295BBB51F81AB9800D09B13 /* BleTableViewHeaderCell.swift */,
+				9295BBB71F81ABAD00D09B13 /* BleTableViewDeviceCell.swift */,
+				9295BBB01F81A29000D09B13 /* ScanViewController.swift */,
+				923724AE1F81D894009D62E6 /* DeviceDetailViewController.swift */,
+				923724B01F81DDAE009D62E6 /* SettingsViewController.swift */,
+			);
+			name = GUI;
+			sourceTree = "<group>";
+		};
+		9295BBB21F81A45300D09B13 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				9295BBB31F81A46A00D09B13 /* Core.swift */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		927E09E01F743473009573FF /* RfidLibTestAppIosSwift */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 927E09F31F743473009573FF /* Build configuration list for PBXNativeTarget "RfidLibTestAppIosSwift" */;
+			buildPhases = (
+				927E09DD1F743473009573FF /* Sources */,
+				927E09DE1F743473009573FF /* Frameworks */,
+				927E09DF1F743473009573FF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RfidLibTestAppIosSwift;
+			productName = TertiumBleScanSwift;
+			productReference = 927E09E11F743473009573FF /* RfidLibTestAppIosSwift.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		927E09D91F743473009573FF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0900;
+				ORGANIZATIONNAME = "Stefano Crosara";
+				TargetAttributes = {
+					927E09E01F743473009573FF = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = X7JRCRW493;
+						LastSwiftMigration = 0900;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 927E09DC1F743473009573FF /* Build configuration list for PBXProject "RfidLibTestAppIosSwift" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 927E09D81F743473009573FF;
+			productRefGroup = 927E09E21F743473009573FF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				927E09E01F743473009573FF /* RfidLibTestAppIosSwift */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		927E09DF1F743473009573FF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				927E09EF1F743473009573FF /* LaunchScreen.storyboard in Resources */,
+				927E09EC1F743473009573FF /* Assets.xcassets in Resources */,
+				927E09EA1F743473009573FF /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		927E09DD1F743473009573FF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				923724BB1F81E9E3009D62E6 /* GCDAsyncSocket.m in Sources */,
+				7B66D7E11F828D090007CFB7 /* SocketHandler.swift in Sources */,
+				7B66D7E21F828D090007CFB7 /* SocketDataProtocol.swift in Sources */,
+				9295BBB11F81A29000D09B13 /* ScanViewController.swift in Sources */,
+				927E09E51F743473009573FF /* AppDelegate.swift in Sources */,
+				7B93FD562031BEE60006F462 /* TxRxDeviceDataProtocol.swift in Sources */,
+				7B93FD552031BEE60006F462 /* TxRxDeviceScanProtocol.swift in Sources */,
+				7B93FD532031BEE60006F462 /* TxRxDeviceProfile.swift in Sources */,
+				9295BBB41F81A46A00D09B13 /* Core.swift in Sources */,
+				7B93FD4F2031BEE60006F462 /* TxRxDevice.swift in Sources */,
+				7B93FD522031BEE60006F462 /* TxRxManagerTimeouts.swift in Sources */,
+				7B93FD572031BEE60006F462 /* TxRxManagerErrors.swift in Sources */,
+				7B93FD502031BEE60006F462 /* TxRxManagerPhases.swift in Sources */,
+				9295BBB61F81AB9800D09B13 /* BleTableViewHeaderCell.swift in Sources */,
+				923724B11F81DDAE009D62E6 /* SettingsViewController.swift in Sources */,
+				7B93FD512031BEE60006F462 /* TxRxWatchDogTimer.swift in Sources */,
+				7B93FD542031BEE60006F462 /* TxRxManager.swift in Sources */,
+				923724AF1F81D894009D62E6 /* DeviceDetailViewController.swift in Sources */,
+				9295BBB81F81ABAE00D09B13 /* BleTableViewDeviceCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		927E09E81F743473009573FF /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				927E09E91F743473009573FF /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		927E09ED1F743473009573FF /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				927E09EE1F743473009573FF /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		927E09F11F743473009573FF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		927E09F21F743473009573FF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		927E09F41F743473009573FF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = X7JRCRW493;
+				INFOPLIST_FILE = "$(SRCROOT)/TestApp/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Tertium.RfidLibTestAppIosSwift;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TestApp/RfidLibTestAppIosSwift-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		927E09F51F743473009573FF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = X7JRCRW493;
+				INFOPLIST_FILE = "$(SRCROOT)/TestApp/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Tertium.RfidLibTestAppIosSwift;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TestApp/RfidLibTestAppIosSwift-Bridging-Header.h";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		927E09DC1F743473009573FF /* Build configuration list for PBXProject "RfidLibTestAppIosSwift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				927E09F11F743473009573FF /* Debug */,
+				927E09F21F743473009573FF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		927E09F31F743473009573FF /* Build configuration list for PBXNativeTarget "RfidLibTestAppIosSwift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				927E09F41F743473009573FF /* Debug */,
+				927E09F51F743473009573FF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 927E09D91F743473009573FF /* Project object */;
+}
