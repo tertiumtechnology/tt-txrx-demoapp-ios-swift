@@ -18,4 +18,4 @@ To download full source code for the demo application and the TxRxLibrary files 
 - Select a connected iOS device as build device and press Run
 
 ## Troubleshooting
-If you have missing files (red filenames in Xcode) you may haven't correctly specified ```--recurse-submodules``` to git clone command. Please ensure the option is specified.
+If you have missing files (red filenames in Xcode) you may haven't correctly specified ```--recurse-submodules``` to git clone command. Please ensure option is specified.
