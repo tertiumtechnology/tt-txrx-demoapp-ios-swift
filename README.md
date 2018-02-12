@@ -2,7 +2,7 @@
 iOS Swift demo application for Tertium rfid TxRx lowlevel library.
 
 ## License
-The test application and the library are released under the MIT license. Please see the `LICENSE.txt` file.
+The test application and the library are released under the MIT license. Please see the `LICENSE` file.
 
 ## Requirements
 Xcode 9+
