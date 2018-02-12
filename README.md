@@ -14,5 +14,5 @@ To download full sourcecode for the demo application and the TxRxLibrary files f
 - Change current directory to any Xcode source directory you have (f.e. Desktop/coding/)
 - type: git clone https://github.com/tertiumtechnology/tt-txrx-demoapp-ios-swift --recurse-submodules
 - Open Xcode
-- Open the project file from <your directory>/tt-txrx-demoapp-ios-swift/ path
-- Select a connected iOS device and press Run
+- Search the directory where you downloaded the files and open the project tt-txrx-demoapp-ios-swift/RfidTxRxLibDemoAppIosSwift.xcodeproj
+- Select a connected iOS device as build device and press Run
