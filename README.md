@@ -8,7 +8,7 @@ The test application and the library are released under the MIT license. Please 
 Xcode 9+
 
 ## Installation
-To download full sourcecode for the demo application and the TxRxLibrary files follow these steps:
+To download full source code for the demo application and the TxRxLibrary files follow these steps:
 
 - Open a terminal window
 - Change current directory to any Xcode source directory you have (f.e. Desktop/coding/)
