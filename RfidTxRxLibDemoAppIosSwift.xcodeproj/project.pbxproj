@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		7B66D7E11F828D090007CFB7 /* SocketHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B66D7DF1F828D080007CFB7 /* SocketHandler.swift */; };
 		7B66D7E21F828D090007CFB7 /* SocketDataProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B66D7E01F828D090007CFB7 /* SocketDataProtocol.swift */; };
+		7B8A9EB720C6A927006F4336 /* TxRxLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B8A9EB620C6A8F3006F4336 /* TxRxLib.framework */; };
+		7B8A9EB820C6A927006F4336 /* TxRxLib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7B8A9EB620C6A8F3006F4336 /* TxRxLib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		923724AF1F81D894009D62E6 /* DeviceDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923724AE1F81D894009D62E6 /* DeviceDetailViewController.swift */; };
 		923724B11F81DDAE009D62E6 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923724B01F81DDAE009D62E6 /* SettingsViewController.swift */; };
 		923724BB1F81E9E3009D62E6 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 923724BA1F81E9E3009D62E6 /* GCDAsyncSocket.m */; };
@@ -20,21 +22,44 @@
 		9295BBB41F81A46A00D09B13 /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9295BBB31F81A46A00D09B13 /* Core.swift */; };
 		9295BBB61F81AB9800D09B13 /* BleTableViewHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9295BBB51F81AB9800D09B13 /* BleTableViewHeaderCell.swift */; };
 		9295BBB81F81ABAE00D09B13 /* BleTableViewDeviceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9295BBB71F81ABAD00D09B13 /* BleTableViewDeviceCell.swift */; };
-		92FCF731203239ED001356BF /* TxRxWatchDogTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FCF728203239ED001356BF /* TxRxWatchDogTimer.swift */; };
-		92FCF732203239ED001356BF /* TxRxManagerErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FCF729203239ED001356BF /* TxRxManagerErrors.swift */; };
-		92FCF733203239ED001356BF /* TxRxManagerTimeouts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FCF72A203239ED001356BF /* TxRxManagerTimeouts.swift */; };
-		92FCF734203239ED001356BF /* TxRxDeviceDataProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FCF72B203239ED001356BF /* TxRxDeviceDataProtocol.swift */; };
-		92FCF735203239ED001356BF /* TxRxDeviceProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FCF72C203239ED001356BF /* TxRxDeviceProfile.swift */; };
-		92FCF736203239ED001356BF /* TxRxManagerPhases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FCF72D203239ED001356BF /* TxRxManagerPhases.swift */; };
-		92FCF737203239ED001356BF /* TxRxDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FCF72E203239ED001356BF /* TxRxDevice.swift */; };
-		92FCF738203239ED001356BF /* TxRxManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FCF72F203239ED001356BF /* TxRxManager.swift */; };
-		92FCF739203239ED001356BF /* TxRxDeviceScanProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FCF730203239ED001356BF /* TxRxDeviceScanProtocol.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7B8A9EB520C6A8F3006F4336 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7B8A9EB120C6A8F3006F4336 /* TxRxLib.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7B8A9E9420C6A697006F4336;
+			remoteInfo = TxRxLib;
+		};
+		7B8A9EB920C6A927006F4336 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7B8A9EB120C6A8F3006F4336 /* TxRxLib.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 7B8A9E9320C6A697006F4336;
+			remoteInfo = TxRxLib;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7B8A9EBB20C6A927006F4336 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				7B8A9EB820C6A927006F4336 /* TxRxLib.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		7B66D7DF1F828D080007CFB7 /* SocketHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SocketHandler.swift; path = Socket/SocketHandler.swift; sourceTree = "<group>"; };
 		7B66D7E01F828D090007CFB7 /* SocketDataProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SocketDataProtocol.swift; path = Socket/SocketDataProtocol.swift; sourceTree = "<group>"; };
 		7B66D7E41F828D4D0007CFB7 /* DemoApp-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DemoApp-Bridging-Header.h"; sourceTree = "<group>"; };
+		7B8A9EB120C6A8F3006F4336 /* TxRxLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TxRxLib.xcodeproj; path = "tt-txrx-lib-ios-swift/TxRxLib.xcodeproj"; sourceTree = "<group>"; };
 		923724AE1F81D894009D62E6 /* DeviceDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DeviceDetailViewController.swift; path = GUI/DeviceDetailViewController.swift; sourceTree = "<group>"; };
 		923724B01F81DDAE009D62E6 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = GUI/SettingsViewController.swift; sourceTree = "<group>"; };
 		923724B81F81E9E2009D62E6 /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCDAsyncSocket.h; path = Foreign/GCDAsyncSocket.h; sourceTree = "<group>"; };
@@ -49,15 +74,6 @@
 		9295BBB31F81A46A00D09B13 /* Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Core.swift; path = Core/Core.swift; sourceTree = "<group>"; };
 		9295BBB51F81AB9800D09B13 /* BleTableViewHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BleTableViewHeaderCell.swift; path = GUI/BleTableViewHeaderCell.swift; sourceTree = "<group>"; };
 		9295BBB71F81ABAD00D09B13 /* BleTableViewDeviceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BleTableViewDeviceCell.swift; path = GUI/BleTableViewDeviceCell.swift; sourceTree = "<group>"; };
-		92FCF728203239ED001356BF /* TxRxWatchDogTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TxRxWatchDogTimer.swift; path = "tt-txrx-lib-ios-swift/TxRxLib/TxRxWatchDogTimer.swift"; sourceTree = SOURCE_ROOT; };
-		92FCF729203239ED001356BF /* TxRxManagerErrors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TxRxManagerErrors.swift; path = "tt-txrx-lib-ios-swift/TxRxLib/TxRxManagerErrors.swift"; sourceTree = SOURCE_ROOT; };
-		92FCF72A203239ED001356BF /* TxRxManagerTimeouts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TxRxManagerTimeouts.swift; path = "tt-txrx-lib-ios-swift/TxRxLib/TxRxManagerTimeouts.swift"; sourceTree = SOURCE_ROOT; };
-		92FCF72B203239ED001356BF /* TxRxDeviceDataProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TxRxDeviceDataProtocol.swift; path = "tt-txrx-lib-ios-swift/TxRxLib/TxRxDeviceDataProtocol.swift"; sourceTree = SOURCE_ROOT; };
-		92FCF72C203239ED001356BF /* TxRxDeviceProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TxRxDeviceProfile.swift; path = "tt-txrx-lib-ios-swift/TxRxLib/TxRxDeviceProfile.swift"; sourceTree = SOURCE_ROOT; };
-		92FCF72D203239ED001356BF /* TxRxManagerPhases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TxRxManagerPhases.swift; path = "tt-txrx-lib-ios-swift/TxRxLib/TxRxManagerPhases.swift"; sourceTree = SOURCE_ROOT; };
-		92FCF72E203239ED001356BF /* TxRxDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TxRxDevice.swift; path = "tt-txrx-lib-ios-swift/TxRxLib/TxRxDevice.swift"; sourceTree = SOURCE_ROOT; };
-		92FCF72F203239ED001356BF /* TxRxManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TxRxManager.swift; path = "tt-txrx-lib-ios-swift/TxRxLib/TxRxManager.swift"; sourceTree = SOURCE_ROOT; };
-		92FCF730203239ED001356BF /* TxRxDeviceScanProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TxRxDeviceScanProtocol.swift; path = "tt-txrx-lib-ios-swift/TxRxLib/TxRxDeviceScanProtocol.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,12 +81,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B8A9EB720C6A927006F4336 /* TxRxLib.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7B8A9EB220C6A8F3006F4336 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7B8A9EB620C6A8F3006F4336 /* TxRxLib.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		923724B21F81E7F0009D62E6 /* Foreign */ = {
 			isa = PBXGroup;
 			children = (
@@ -93,6 +118,7 @@
 		927E09D81F743473009573FF = {
 			isa = PBXGroup;
 			children = (
+				7B8A9EB120C6A8F3006F4336 /* TxRxLib.xcodeproj */,
 				927E09E31F743473009573FF /* DemoApp */,
 				927E09E21F743473009573FF /* Products */,
 			);
@@ -111,7 +137,6 @@
 			children = (
 				923724BC1F81EACB009D62E6 /* Socket */,
 				923724B21F81E7F0009D62E6 /* Foreign */,
-				927E09F61F7434A0009573FF /* TxRxLib */,
 				9295BBB21F81A45300D09B13 /* Core */,
 				9295BBAF1F81A23B00D09B13 /* GUI */,
 				927E09E41F743473009573FF /* AppDelegate.swift */,
@@ -121,22 +146,6 @@
 				927E09F01F743473009573FF /* Info.plist */,
 			);
 			path = DemoApp;
-			sourceTree = "<group>";
-		};
-		927E09F61F7434A0009573FF /* TxRxLib */ = {
-			isa = PBXGroup;
-			children = (
-				92FCF72E203239ED001356BF /* TxRxDevice.swift */,
-				92FCF72B203239ED001356BF /* TxRxDeviceDataProtocol.swift */,
-				92FCF72C203239ED001356BF /* TxRxDeviceProfile.swift */,
-				92FCF730203239ED001356BF /* TxRxDeviceScanProtocol.swift */,
-				92FCF72F203239ED001356BF /* TxRxManager.swift */,
-				92FCF729203239ED001356BF /* TxRxManagerErrors.swift */,
-				92FCF72D203239ED001356BF /* TxRxManagerPhases.swift */,
-				92FCF72A203239ED001356BF /* TxRxManagerTimeouts.swift */,
-				92FCF728203239ED001356BF /* TxRxWatchDogTimer.swift */,
-			);
-			name = TxRxLib;
 			sourceTree = "<group>";
 		};
 		9295BBAF1F81A23B00D09B13 /* GUI */ = {
@@ -169,10 +178,12 @@
 				927E09DD1F743473009573FF /* Sources */,
 				927E09DE1F743473009573FF /* Frameworks */,
 				927E09DF1F743473009573FF /* Resources */,
+				7B8A9EBB20C6A927006F4336 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				7B8A9EBA20C6A927006F4336 /* PBXTargetDependency */,
 			);
 			name = RfidTxRxLibDemoAppIosSwift;
 			productName = TertiumBleScanSwift;
@@ -186,7 +197,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Stefano Crosara";
 				TargetAttributes = {
 					927E09E01F743473009573FF = {
@@ -208,12 +219,28 @@
 			mainGroup = 927E09D81F743473009573FF;
 			productRefGroup = 927E09E21F743473009573FF /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 7B8A9EB220C6A8F3006F4336 /* Products */;
+					ProjectRef = 7B8A9EB120C6A8F3006F4336 /* TxRxLib.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				927E09E01F743473009573FF /* RfidTxRxLibDemoAppIosSwift */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		7B8A9EB620C6A8F3006F4336 /* TxRxLib.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = TxRxLib.framework;
+			remoteRef = 7B8A9EB520C6A8F3006F4336 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		927E09DF1F743473009573FF /* Resources */ = {
@@ -235,27 +262,26 @@
 			files = (
 				923724BB1F81E9E3009D62E6 /* GCDAsyncSocket.m in Sources */,
 				7B66D7E11F828D090007CFB7 /* SocketHandler.swift in Sources */,
-				92FCF731203239ED001356BF /* TxRxWatchDogTimer.swift in Sources */,
-				92FCF739203239ED001356BF /* TxRxDeviceScanProtocol.swift in Sources */,
 				7B66D7E21F828D090007CFB7 /* SocketDataProtocol.swift in Sources */,
-				92FCF732203239ED001356BF /* TxRxManagerErrors.swift in Sources */,
-				92FCF735203239ED001356BF /* TxRxDeviceProfile.swift in Sources */,
 				9295BBB11F81A29000D09B13 /* ScanViewController.swift in Sources */,
-				92FCF736203239ED001356BF /* TxRxManagerPhases.swift in Sources */,
 				927E09E51F743473009573FF /* AppDelegate.swift in Sources */,
 				9295BBB41F81A46A00D09B13 /* Core.swift in Sources */,
 				9295BBB61F81AB9800D09B13 /* BleTableViewHeaderCell.swift in Sources */,
-				92FCF738203239ED001356BF /* TxRxManager.swift in Sources */,
-				92FCF737203239ED001356BF /* TxRxDevice.swift in Sources */,
 				923724B11F81DDAE009D62E6 /* SettingsViewController.swift in Sources */,
-				92FCF733203239ED001356BF /* TxRxManagerTimeouts.swift in Sources */,
-				92FCF734203239ED001356BF /* TxRxDeviceDataProtocol.swift in Sources */,
 				923724AF1F81D894009D62E6 /* DeviceDetailViewController.swift in Sources */,
 				9295BBB81F81ABAE00D09B13 /* BleTableViewDeviceCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7B8A9EBA20C6A927006F4336 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = TxRxLib;
+			targetProxy = 7B8A9EB920C6A927006F4336 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		927E09E81F743473009573FF /* Main.storyboard */ = {
@@ -291,6 +317,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -298,6 +325,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -350,6 +378,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -357,6 +386,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -379,6 +409,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -391,6 +422,7 @@
 		927E09F41F743473009573FF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = X7JRCRW493;
@@ -408,6 +440,7 @@
 		927E09F51F743473009573FF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = X7JRCRW493;

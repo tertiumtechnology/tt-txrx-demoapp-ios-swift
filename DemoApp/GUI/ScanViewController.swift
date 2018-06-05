@@ -22,6 +22,7 @@
  * THE SOFTWARE.
  */
 import UIKit
+import TxRxLib
 
 class ScanViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     

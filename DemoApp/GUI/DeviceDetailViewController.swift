@@ -22,6 +22,7 @@
  * THE SOFTWARE.
  */
 import UIKit
+import TxRxLib
 
 class DeviceDetailViewController: UIViewController, SocketDataProtocol {
     @IBOutlet weak var lblDevice: UILabel!

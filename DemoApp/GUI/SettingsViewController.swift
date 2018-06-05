@@ -22,6 +22,7 @@
  * THE SOFTWARE.
  */
 import UIKit
+import TxRxLib
 
 class SettingsViewController: UIViewController {
     @IBOutlet weak var txtConnectTimeout: UITextField!
