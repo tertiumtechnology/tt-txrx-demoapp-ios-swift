@@ -22,6 +22,8 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>This app uses bluetooth to communicate with Tertium RFID Devices</string>
 	<key>NSBluetoothPeripheralUsageDescription</key>
 	<string>This app uses bluetooth to communicate with Tertium RFID Devices</string>
 	<key>UILaunchStoryboardName</key>

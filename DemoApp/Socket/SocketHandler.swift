@@ -43,7 +43,7 @@ class SocketHandler: NSObject, GCDAsyncSocketDelegate {
         _commandTerminator = terminator
         _listenSocket = GCDAsyncSocket(delegate: self, delegateQueue: DispatchQueue.main)
         if let listenSocket = _listenSocket {
-            try? listenSocket.accept(onPort: 2001)
+            try? listenSocket.accept(onPort: 1234)
         }
     }
     

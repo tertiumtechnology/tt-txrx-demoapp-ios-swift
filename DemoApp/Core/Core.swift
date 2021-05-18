@@ -45,7 +45,10 @@ class Core: TxRxDeviceScanProtocol, TxRxDeviceDataProtocol {
     static let TXRX_NOTIFICATION_DEVICE_CONNECT_ERROR = "TxRxDeviceConnectError"
     static let TXRX_NOTIFICATION_DEVICE_CONNECTED = "TxRxDeviceConnected"
     static let TXRX_NOTIFICATION_DEVICE_READY = "TxRxDeviceReady"
+    static let TXRX_NOTIFICATION_DEVICE_CAN_CHANGE_OPERATIONAL_MODE = "TxRxCanChangeMode"
     static let TXRX_NOTIFICATION_DEVICE_DISCONNECTED = "TxRxDeviceDisconnected"
+    static let TXRX_NOTIFICATION_DEVICE_MODE_CHANGED = "TxRxDeviceModeChanged"
+    static let TXRX_NOTIFICATION_DEVICE_MODE_CHANGE_ERROR = "TxRxDeviceModeChangeError"
     static let TXRX_NOTIFICATION_DEVICE_DATA_SENT = "TxRxDeviceDataSent"
     static let TXRX_NOTIFICATION_DEVICE_DATA_SEND_ERROR = "TxRxDeviceDataSendError"
     static let TXRX_NOTIFICATION_DEVICE_DATA_SEND_TIMEOUT = "TxRxDeviceDataSendTimeout"
@@ -56,7 +59,7 @@ class Core: TxRxDeviceScanProtocol, TxRxDeviceDataProtocol {
     // MARK: Core properties
     private let _notificationCenter = NotificationCenter.default
     private static let _sharedInstance = Core()
-    private var _manager: TxRxManager?
+    private var _manager: TxRxDeviceManager?
     private var _scannedDevices = [TxRxDevice]()
     
     // MARK: Core class implementation
@@ -65,7 +68,7 @@ class Core: TxRxDeviceScanProtocol, TxRxDeviceDataProtocol {
     }
     
     init() {
-        _manager = TxRxManager.getInstance()
+        _manager = TxRxDeviceManager.getInstance()
         _manager?._delegate = self
     }
     
@@ -99,6 +102,23 @@ class Core: TxRxDeviceScanProtocol, TxRxDeviceDataProtocol {
     /// - parameter device: the TxRxDevice device to connect to, MUST be non null
     func connectDevice(device: TxRxDevice) {
         _manager?.connectDevice(device: device)
+    }
+    
+    /// Begins sending the Data byte buffer to a connected device.
+    ///
+    /// NOTE: you may ONLY send data to already connected devices
+    ///
+    /// NOTE: Data to device is sent in MTU fragments (refer to TxRxDeviceProfile maxSendPacketSize class attribute)
+    ///
+    /// - parameter device: the device to send the data (must be connected first!)
+    /// - parameter data: Data class with contents of data to send
+    func setMode(device: TxRxDevice, mode: UInt) -> Bool {
+        if let manager = _manager {
+            manager.setMode(device: device, mode: mode)
+            return true
+        }
+        
+        return false
     }
     
     /// Begins sending the Data byte buffer to a connected device.
@@ -159,7 +179,7 @@ class Core: TxRxDeviceScanProtocol, TxRxDeviceDataProtocol {
     /// - parameter device: The device unable to connect to
     /// - parameter error: The error happened
     func deviceConnectError(device: TxRxDevice, error: NSError) {
-        if error.code == TxRxManagerErrors.ErrorCodes.ERROR_DEVICE_DISCONNECT_TIMED_OUT.rawValue {
+        if error.code == TxRxDeviceManagerErrors.ErrorCodes.ERROR_DEVICE_DISCONNECT_TIMED_OUT.rawValue {
             deviceDisconnected(device: device)
             return
         }
@@ -181,6 +201,13 @@ class Core: TxRxDeviceScanProtocol, TxRxDeviceDataProtocol {
     /// - parameter device: The device unable to connect to
     func deviceReady(device: TxRxDevice) {
         _notificationCenter.post(name: NSNotification.Name(rawValue: Core.TXRX_NOTIFICATION_NAME), object: device, userInfo: ["type": Core.TXRX_NOTIFICATION_DEVICE_READY])
+    }
+    
+    /// Notifies observers device can also set operational mode
+    ///
+    /// - parameter device: The TxRxDevice on which the error occoured
+    func setModeCharacteristicDiscovered(device: TxRxDevice) {
+        _notificationCenter.post(name: NSNotification.Name(rawValue: Core.TXRX_NOTIFICATION_NAME), object: device, userInfo: ["type": Core.TXRX_NOTIFICATION_DEVICE_CAN_CHANGE_OPERATIONAL_MODE])
     }
     
     /// Notifies observers that there has been an error sending data to a device
@@ -209,6 +236,20 @@ class Core: TxRxDeviceScanProtocol, TxRxDeviceDataProtocol {
     /// - parameter device: The device which sent the data
     func receivedData(device: TxRxDevice, data: Data) {
         _notificationCenter.post(name: NSNotification.Name(rawValue: Core.TXRX_NOTIFICATION_NAME), object: data, userInfo: ["type": Core.TXRX_NOTIFICATION_DEVICE_DATA_RECEIVED])
+    }
+    
+    /// Notifies observers that a mode change happened successfully
+    ///
+    /// - parameter device: The device which sent the data
+    func hasSetMode(device: TxRxDevice, operationalMode: UInt) {
+        _notificationCenter.post(name: NSNotification.Name(rawValue: Core.TXRX_NOTIFICATION_NAME), object: device, userInfo: ["type": Core.TXRX_NOTIFICATION_DEVICE_MODE_CHANGED, "mode": operationalMode])
+    }
+    
+    /// Notifies observers that mode change errored
+    ///
+    /// - parameter device: The device which sent the data
+    func setModeError(device: TxRxDevice, errorCode: Int) {
+        _notificationCenter.post(name: NSNotification.Name(rawValue: Core.TXRX_NOTIFICATION_NAME), object: device, userInfo: ["type": Core.TXRX_NOTIFICATION_DEVICE_MODE_CHANGE_ERROR, "errorCode": errorCode])
     }
     
     /// Notifies observers that there has been a critical error on a device

@@ -114,7 +114,7 @@ class ScanViewController: UIViewController, UITableViewDataSource, UITableViewDe
             var error: NSError?
             error = notification.object as? NSError
             
-            if error?.code == TxRxManagerErrors.ErrorCodes.ERROR_BLUETOOTH_NOT_READY_OR_LOST.rawValue {
+            if error?.code == TxRxDeviceManagerErrors.ErrorCodes.ERROR_BLUETOOTH_NOT_READY_OR_LOST.rawValue {
                 let alertView = UIAlertView(title: "Error", message: error?.localizedDescription, delegate: nil, cancelButtonTitle: "OK")
                 alertView.show()
             }

@@ -29,16 +29,16 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var txtWriteTimeout: UITextField!
     @IBOutlet weak var txtFirstReadTimeout: UITextField!
     @IBOutlet weak var txtLaterReadTimeout: UITextField!
-    private let _manager = TxRxManager.getInstance()
+    private let _manager = TxRxDeviceManager.getInstance()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        txtConnectTimeout.text = String(format: "%u", _manager.getTimeOutValue(timeOutType: TxRxManagerTimeouts.S_TERTIUM_TIMEOUT_CONNECT))
-        txtWriteTimeout.text = String(format: "%u", _manager.getTimeOutValue(timeOutType: TxRxManagerTimeouts.S_TERTIUM_TIMEOUT_SEND_PACKET))
-        txtFirstReadTimeout.text = String(format: "%u", _manager.getTimeOutValue(timeOutType: TxRxManagerTimeouts.S_TERITUM_TIMEOUT_RECEIVE_FIRST_PACKET))
-        txtLaterReadTimeout.text = String(format: "%u", _manager.getTimeOutValue(timeOutType: TxRxManagerTimeouts.S_TERTIUM_TIMEOUT_RECEIVE_PACKETS))
+        txtConnectTimeout.text = String(format: "%u", _manager.getTimeOutValue(timeOutType: TxRxDeviceManagerTimeouts.S_TERTIUM_TIMEOUT_CONNECT))
+        txtWriteTimeout.text = String(format: "%u", _manager.getTimeOutValue(timeOutType: TxRxDeviceManagerTimeouts.S_TERTIUM_TIMEOUT_SEND_PACKET))
+        txtFirstReadTimeout.text = String(format: "%u", _manager.getTimeOutValue(timeOutType: TxRxDeviceManagerTimeouts.S_TERITUM_TIMEOUT_RECEIVE_FIRST_PACKET))
+        txtLaterReadTimeout.text = String(format: "%u", _manager.getTimeOutValue(timeOutType: TxRxDeviceManagerTimeouts.S_TERTIUM_TIMEOUT_RECEIVE_PACKETS))
     }
 
     override func didReceiveMemoryWarning() {
@@ -58,9 +58,9 @@ class SettingsViewController: UIViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         
-        _manager.setTimeOutValue(timeOutValue: UInt32(txtConnectTimeout.text!)!, timeOutType: TxRxManagerTimeouts.S_TERTIUM_TIMEOUT_CONNECT)
-        _manager.setTimeOutValue(timeOutValue: UInt32(txtWriteTimeout.text!)!, timeOutType: TxRxManagerTimeouts.S_TERTIUM_TIMEOUT_SEND_PACKET)
-        _manager.setTimeOutValue(timeOutValue: UInt32(txtFirstReadTimeout.text!)!, timeOutType: TxRxManagerTimeouts.S_TERITUM_TIMEOUT_RECEIVE_FIRST_PACKET)
-        _manager.setTimeOutValue(timeOutValue: UInt32(txtLaterReadTimeout.text!)!, timeOutType: TxRxManagerTimeouts.S_TERTIUM_TIMEOUT_RECEIVE_PACKETS)
+        _manager.setTimeOutValue(timeOutValue: UInt32(txtConnectTimeout.text!)!, timeOutType: TxRxDeviceManagerTimeouts.S_TERTIUM_TIMEOUT_CONNECT)
+        _manager.setTimeOutValue(timeOutValue: UInt32(txtWriteTimeout.text!)!, timeOutType: TxRxDeviceManagerTimeouts.S_TERTIUM_TIMEOUT_SEND_PACKET)
+        _manager.setTimeOutValue(timeOutValue: UInt32(txtFirstReadTimeout.text!)!, timeOutType: TxRxDeviceManagerTimeouts.S_TERITUM_TIMEOUT_RECEIVE_FIRST_PACKET)
+        _manager.setTimeOutValue(timeOutValue: UInt32(txtLaterReadTimeout.text!)!, timeOutType: TxRxDeviceManagerTimeouts.S_TERTIUM_TIMEOUT_RECEIVE_PACKETS)
     }
 }

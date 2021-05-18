@@ -29,14 +29,23 @@ class DeviceDetailViewController: UIViewController, SocketDataProtocol {
     @IBOutlet weak var btnWrite: UIButton!
     @IBOutlet weak var btnConnect: UIButton!
 
+    @IBOutlet weak var btnSwitchMode: UIButton!
     @IBOutlet weak var txtReceive: UITextView!
     @IBOutlet weak var txtDataToSend: UITextField!
     private let core = Core.getCore()
     private let _socketHandler = SocketHandler.getSocketHandler()
     private var font: UIFont?
+    private var _settingMode: Bool = false
     var device: TxRxDevice?
     var screenBuffer = NSMutableAttributedString()
     
+    struct modeConstants {
+        static let STREAM_MODE: UInt = 1
+        static let CMD_MODE: UInt = 3
+    }
+    
+    private var operationalMode: UInt = modeConstants.STREAM_MODE
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -99,15 +108,40 @@ class DeviceDetailViewController: UIViewController, SocketDataProtocol {
         view.endEditing(true)
     }
     
+    @IBAction func btnSwitchMode(_ sender: Any) {
+        var newMode: UInt
+        if let device = device {
+            if operationalMode == modeConstants.CMD_MODE {
+                newMode = modeConstants.STREAM_MODE
+            } else {
+                newMode = modeConstants.CMD_MODE
+            }
+            
+            if _settingMode == true {
+                screenBuffer.append(NSAttributedString(string: "Already changing mode or change mode failed!\n", attributes: [NSAttributedString.Key.foregroundColor: UIColor.yellow]))
+                txtReceive.attributedText = screenBuffer.copy() as? NSAttributedString
+                scrollDown()
+            }
+            
+            if core.setMode(device: device, mode: newMode) == true {
+                _settingMode = true
+            } else {
+                screenBuffer.append(NSAttributedString(string: "Change mode failed!\n", attributes: [NSAttributedString.Key.foregroundColor: UIColor.yellow]))
+                txtReceive.attributedText = screenBuffer.copy() as? NSAttributedString
+                scrollDown()
+            }
+        }
+    }
+    
     func appendData(data: Data) {
-        screenBuffer.append(NSAttributedString(string: (String(data: data, encoding: String.Encoding.ascii)!), attributes: [NSAttributedStringKey.foregroundColor: UIColor.yellow]))
-        txtReceive.attributedText = screenBuffer.copy() as! NSAttributedString
+        screenBuffer.append(NSAttributedString(string: (String(data: data, encoding: String.Encoding.ascii)!), attributes: [NSAttributedString.Key.foregroundColor: UIColor.yellow]))
+        txtReceive.attributedText = screenBuffer.copy() as? NSAttributedString
         scrollDown()
     }
     
     func appendStatusTextWithNoTerminator(_ text: String) {
-        screenBuffer.append(NSAttributedString(string: text, attributes: [NSAttributedStringKey.foregroundColor: UIColor.white]))
-        txtReceive.attributedText = screenBuffer.copy() as! NSAttributedString
+        screenBuffer.append(NSAttributedString(string: text, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]))
+        txtReceive.attributedText = screenBuffer.copy() as? NSAttributedString
         scrollDown()
     }
     
@@ -117,20 +151,20 @@ class DeviceDetailViewController: UIViewController, SocketDataProtocol {
     }
     
     func appendSendText(_ text: String) {
-        screenBuffer.append(NSAttributedString(string: text + "\r\n", attributes: [NSAttributedStringKey.foregroundColor: UIColor.white]))
-        txtReceive.attributedText = screenBuffer.copy() as! NSAttributedString
+        screenBuffer.append(NSAttributedString(string: text + "\r\n", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]))
+        txtReceive.attributedText = screenBuffer.copy() as? NSAttributedString
         scrollDown()
     }
     
     func appendSocketText(_ text: String) {
-        screenBuffer.append(NSAttributedString(string: text, attributes: [NSAttributedStringKey.foregroundColor: UIColor.green]))
-        txtReceive.attributedText = screenBuffer.copy() as! NSAttributedString
+        screenBuffer.append(NSAttributedString(string: text, attributes: [NSAttributedString.Key.foregroundColor: UIColor.green]))
+        txtReceive.attributedText = screenBuffer.copy() as? NSAttributedString
         scrollDown()
     }
     
     func appendErrorText(_ text: String) {
-        screenBuffer.append(NSAttributedString(string: text + "\r\n", attributes: [NSAttributedStringKey.foregroundColor: UIColor.red]))
-        txtReceive.attributedText = screenBuffer.copy() as! NSAttributedString
+        screenBuffer.append(NSAttributedString(string: text + "\r\n", attributes: [NSAttributedString.Key.foregroundColor: UIColor.red]))
+        txtReceive.attributedText = screenBuffer.copy() as? NSAttributedString
         scrollDown()
     }
     
@@ -154,6 +188,7 @@ class DeviceDetailViewController: UIViewController, SocketDataProtocol {
     }
     
     @objc func receiveTxRxNotification(_ notification: Notification) {
+        _settingMode = false
         if let type = notification.userInfo?["type"] as? String {
             // Handles Core class reflected notifications. The notifications are reflections of TxRxDeviceDataProtocol delegate callbacks
             switch type {
@@ -175,10 +210,33 @@ class DeviceDetailViewController: UIViewController, SocketDataProtocol {
                     btnConnect.setTitle("CONNECT", for: .normal)
                     appendStatusText("Disconnected!")
                     _socketHandler.closeListenSocket()
+                    btnSwitchMode.setTitle("OPERATIONAL MODE SWITCH NOT SUPPORTED", for: UIControl.State.normal)
+                    operationalMode = modeConstants.STREAM_MODE
 
                 case Core.TXRX_NOTIFICATION_DEVICE_ERROR, Core.TXRX_NOTIFICATION_DEVICE_CONNECT_ERROR, Core.TXRX_NOTIFICATION_DEVICE_DATA_RECEIVE_ERROR, Core.TXRX_NOTIFICATION_DEVICE_DATA_SEND_ERROR, Core.TXRX_NOTIFICATION_INTERNAL_ERROR:
                     if let error = notification.object as? Error {
                         appendErrorText(error.localizedDescription)
+                    }
+                    
+                case Core.TXRX_NOTIFICATION_DEVICE_CAN_CHANGE_OPERATIONAL_MODE:
+                    btnSwitchMode.isEnabled = true
+                    btnSwitchMode.setTitle("SWITCH TO CMD MODE", for: UIControl.State.normal)
+                    
+                case Core.TXRX_NOTIFICATION_DEVICE_MODE_CHANGE_ERROR:
+                    _settingMode = false
+                    if let error = notification.object as? Error {
+                        appendErrorText(error.localizedDescription)
+                    }
+
+                case Core.TXRX_NOTIFICATION_DEVICE_MODE_CHANGED:
+                    _settingMode = false
+                    if let mode = notification.userInfo?["mode"] as? UInt {
+                        if mode == modeConstants.CMD_MODE {
+                            btnSwitchMode.setTitle("SWITCH TO STREAM MODE", for: UIControl.State.normal)
+                        } else {
+                            btnSwitchMode.setTitle("SWITCH TO CMD MODE", for: UIControl.State.normal)
+                        }
+                        operationalMode = mode
                     }
                 
                 default:
@@ -226,7 +284,7 @@ class DeviceDetailViewController: UIViewController, SocketDataProtocol {
             if let ip = getIPAddress() {
                 appendStatusTextWithNoTerminator("TCP/IP Server open at ")
                 appendStatusTextWithNoTerminator(ip)
-                appendStatusText(" port 2001")
+                appendStatusText(" port 1234")
                 _socketHandler.openListenSocket(terminator: deviceProfile.commandEnd)
             } else {
                 appendErrorText("Unable to open commands socket. No IP was found on WiFi interface. Interface down ?")
@@ -243,7 +301,7 @@ class DeviceDetailViewController: UIViewController, SocketDataProtocol {
         // Pass the selected object to the new view controller.
     }
     */
-    override func unwind(for unwindSegue: UIStoryboardSegue, towardsViewController subsequentVC: UIViewController) {
+    override func unwind(for unwindSegue: UIStoryboardSegue, towards subsequentVC: UIViewController) {
         _socketHandler.closeListenSocket()
     }    
 }
