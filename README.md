@@ -5,7 +5,7 @@ iOS Swift demo application for Tertium rfid TxRx lowlevel library.
 The test application and the library are released under the MIT license. Please see the `LICENSE` file.
 
 ## Requirements
-Xcode 9+
+Xcode 11.1+
 
 ## Installation
 To download full source code for the demo application and the TxRxLibrary follow these steps:
