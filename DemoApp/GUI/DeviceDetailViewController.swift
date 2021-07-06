@@ -33,7 +33,8 @@ class DeviceDetailViewController: UIViewController, SocketDataProtocol {
     @IBOutlet weak var txtReceive: UITextView!
     @IBOutlet weak var txtDataToSend: UITextField!
     private let core = Core.getCore()
-    private let _socketHandler = SocketHandler.getSocketHandler()
+    private var _socketHandler: SocketHandler?
+    private var _eventSocketHandler: SocketHandler?
     private var font: UIFont?
     private var _settingMode: Bool = false
     var device: TxRxDevice?
@@ -48,9 +49,6 @@ class DeviceDetailViewController: UIViewController, SocketDataProtocol {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
-        _socketHandler._delegate = self
         
         //
         font = UIFont(name: "Terminal", size: 10.0)
@@ -72,7 +70,8 @@ class DeviceDetailViewController: UIViewController, SocketDataProtocol {
     }
 
     deinit {
-        _socketHandler.closeListenSocket()
+        _socketHandler?.closeListenSocket()
+        _eventSocketHandler?.closeListenSocket()
         
         // Remove ourselves from notification center
         NotificationCenter.default.removeObserver(self)
@@ -139,6 +138,12 @@ class DeviceDetailViewController: UIViewController, SocketDataProtocol {
         scrollDown()
     }
     
+    func appendData(data: Data, withColor: UIColor) {
+        screenBuffer.append(NSAttributedString(string: (String(data: data, encoding: String.Encoding.ascii)!), attributes: [NSAttributedString.Key.foregroundColor: withColor]))
+        txtReceive.attributedText = screenBuffer.copy() as? NSAttributedString
+        scrollDown()
+    }
+
     func appendStatusTextWithNoTerminator(_ text: String) {
         screenBuffer.append(NSAttributedString(string: text, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]))
         txtReceive.attributedText = screenBuffer.copy() as? NSAttributedString
@@ -157,7 +162,7 @@ class DeviceDetailViewController: UIViewController, SocketDataProtocol {
     }
     
     func appendSocketText(_ text: String) {
-        screenBuffer.append(NSAttributedString(string: text, attributes: [NSAttributedString.Key.foregroundColor: UIColor.green]))
+        screenBuffer.append(NSAttributedString(string: text, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]))
         txtReceive.attributedText = screenBuffer.copy() as? NSAttributedString
         scrollDown()
     }
@@ -203,16 +208,22 @@ class DeviceDetailViewController: UIViewController, SocketDataProtocol {
                 case Core.TXRX_NOTIFICATION_DEVICE_DATA_RECEIVED:
                     if let data = notification.object as? Data {
                         appendData(data: data)
-                        _socketHandler.sendData(data: data)
+                        _socketHandler?.sendData(data: data)
+                    }
+                
+                case Core.TXRX_NOTIFICATION_DEVICE_EVENT_DATA_RECEIVED:
+                    if let data = notification.object as? Data {
+                        appendData(data: data, withColor: UIColor.green)
+                        _eventSocketHandler?.sendData(data: data)
                     }
                 
                 case Core.TXRX_NOTIFICATION_DEVICE_DISCONNECTED:
                     btnConnect.setTitle("CONNECT", for: .normal)
                     appendStatusText("Disconnected!")
-                    _socketHandler.closeListenSocket()
+                    _socketHandler?.closeListenSocket()
                     btnSwitchMode.setTitle("OPERATIONAL MODE SWITCH NOT SUPPORTED", for: UIControl.State.normal)
                     operationalMode = modeConstants.STREAM_MODE
-
+                    
                 case Core.TXRX_NOTIFICATION_DEVICE_ERROR, Core.TXRX_NOTIFICATION_DEVICE_CONNECT_ERROR, Core.TXRX_NOTIFICATION_DEVICE_DATA_RECEIVE_ERROR, Core.TXRX_NOTIFICATION_DEVICE_DATA_SEND_ERROR, Core.TXRX_NOTIFICATION_INTERNAL_ERROR:
                     if let error = notification.object as? Error {
                         appendErrorText(error.localizedDescription)
@@ -285,7 +296,16 @@ class DeviceDetailViewController: UIViewController, SocketDataProtocol {
                 appendStatusTextWithNoTerminator("TCP/IP Server open at ")
                 appendStatusTextWithNoTerminator(ip)
                 appendStatusText(" port 1234")
-                _socketHandler.openListenSocket(terminator: deviceProfile.commandEnd)
+                _socketHandler = SocketHandler(readonly: false)
+                _socketHandler?._delegate = self
+                _socketHandler?.openListenSocket(terminator: deviceProfile.commandEnd, port: 1234)
+                
+                appendStatusTextWithNoTerminator("EVENT TCP/IP Server open at ")
+                appendStatusTextWithNoTerminator(ip)
+                appendStatusText(" port 1235")
+                _eventSocketHandler = SocketHandler(readonly: true)
+                _eventSocketHandler?._delegate = self
+                _eventSocketHandler?.openListenSocket(terminator: deviceProfile.commandEnd, port: 1235)
             } else {
                 appendErrorText("Unable to open commands socket. No IP was found on WiFi interface. Interface down ?")
             }
@@ -302,6 +322,7 @@ class DeviceDetailViewController: UIViewController, SocketDataProtocol {
     }
     */
     override func unwind(for unwindSegue: UIStoryboardSegue, towards subsequentVC: UIViewController) {
-        _socketHandler.closeListenSocket()
+        _socketHandler?.closeListenSocket()
+        _eventSocketHandler?.closeListenSocket()
     }    
 }

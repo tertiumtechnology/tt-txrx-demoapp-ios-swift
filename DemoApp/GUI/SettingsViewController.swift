@@ -57,7 +57,6 @@ class SettingsViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        
         _manager.setTimeOutValue(timeOutValue: UInt32(txtConnectTimeout.text!)!, timeOutType: TxRxDeviceManagerTimeouts.S_TERTIUM_TIMEOUT_CONNECT)
         _manager.setTimeOutValue(timeOutValue: UInt32(txtWriteTimeout.text!)!, timeOutType: TxRxDeviceManagerTimeouts.S_TERTIUM_TIMEOUT_SEND_PACKET)
         _manager.setTimeOutValue(timeOutValue: UInt32(txtFirstReadTimeout.text!)!, timeOutType: TxRxDeviceManagerTimeouts.S_TERITUM_TIMEOUT_RECEIVE_FIRST_PACKET)

@@ -53,7 +53,9 @@ class Core: TxRxDeviceScanProtocol, TxRxDeviceDataProtocol {
     static let TXRX_NOTIFICATION_DEVICE_DATA_SEND_ERROR = "TxRxDeviceDataSendError"
     static let TXRX_NOTIFICATION_DEVICE_DATA_SEND_TIMEOUT = "TxRxDeviceDataSendTimeout"
     static let TXRX_NOTIFICATION_DEVICE_DATA_RECEIVED = "TxRxDeviceDataReceived"
+    static let TXRX_NOTIFICATION_DEVICE_EVENT_DATA_RECEIVED = "TxRxDeviceEventDataReceived"
     static let TXRX_NOTIFICATION_DEVICE_DATA_RECEIVE_ERROR = "TxRxDeviceDataReceiveError"
+    static let TXRX_NOTIFICATION_DEVICE_EVENT_DATA_RECEIVE_ERROR = "TxRxDeviceEventDataReceiveError"
     static let TXRX_NOTIFICATION_INTERNAL_ERROR = "TxRxDeviceInternalError"
     
     // MARK: Core properties
@@ -231,11 +233,18 @@ class Core: TxRxDeviceScanProtocol, TxRxDeviceDataProtocol {
         _notificationCenter.post(name: NSNotification.Name(rawValue: Core.TXRX_NOTIFICATION_NAME), object: error, userInfo: ["type": Core.TXRX_NOTIFICATION_DEVICE_DATA_RECEIVE_ERROR])
     }
     
-    /// Notifies observers that there some data arrived from a device
+    /// Notifies observers that data arrived from a device
     ///
     /// - parameter device: The device which sent the data
     func receivedData(device: TxRxDevice, data: Data) {
         _notificationCenter.post(name: NSNotification.Name(rawValue: Core.TXRX_NOTIFICATION_NAME), object: data, userInfo: ["type": Core.TXRX_NOTIFICATION_DEVICE_DATA_RECEIVED])
+    }
+    
+    /// Notifies observers that event data arrived from a device
+    ///
+    /// - parameter device: The device which sent the data
+    func receivedEventData(device: TxRxDevice, data: Data) {
+        _notificationCenter.post(name: NSNotification.Name(rawValue: Core.TXRX_NOTIFICATION_NAME), object: data, userInfo: ["type": Core.TXRX_NOTIFICATION_DEVICE_EVENT_DATA_RECEIVED])
     }
     
     /// Notifies observers that a mode change happened successfully

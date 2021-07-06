@@ -24,7 +24,6 @@
 import Foundation
 
 class SocketHandler: NSObject, GCDAsyncSocketDelegate {
-    private static var _socketHandler = SocketHandler()
     var _listenSocket: GCDAsyncSocket?
     private var _connectedSocket: GCDAsyncSocket?
     private var _commandTerminator: String = ""
@@ -33,17 +32,18 @@ class SocketHandler: NSObject, GCDAsyncSocketDelegate {
     var _readDataTimer: Timer?
     var _socketTag: Int = 0
     var _delegate: SocketDataProtocol?
+    var _readOnly: Bool
     
-    class func getSocketHandler() -> SocketHandler {
-        return _socketHandler
+    init(readonly: Bool) {
+        _readOnly = readonly
     }
     
-    func openListenSocket(terminator: String) {
+    func openListenSocket(terminator: String, port: UInt16) {
         closeListenSocket()
         _commandTerminator = terminator
         _listenSocket = GCDAsyncSocket(delegate: self, delegateQueue: DispatchQueue.main)
         if let listenSocket = _listenSocket {
-            try? listenSocket.accept(onPort: 1234)
+            try? listenSocket.accept(onPort: port)
         }
     }
     
@@ -76,6 +76,10 @@ class SocketHandler: NSObject, GCDAsyncSocketDelegate {
         var commands: [String]
         var sentLen: Int = 0
         
+        if(_readOnly == true) {
+            return;
+        }
+        
         _socketBuffer.append(data)
         text = String(data: _socketBuffer, encoding: String.Encoding.ascii) ?? ""
         commands = text.components(separatedBy: _commandTerminator)
@@ -91,12 +95,14 @@ class SocketHandler: NSObject, GCDAsyncSocketDelegate {
             
             if sentLen != 0 {
                 var newData = Data()
-                
-                newData.append(_socketBuffer.subdata(in: sentLen..<_socketBuffer.count))
+                if (sentLen <= _socketBuffer.count) {
+                    newData.append(_socketBuffer.subdata(in: sentLen..<_socketBuffer.count))
+                }
                 _socketBuffer = newData
             }
         }
         
         _connectedSocket?.readData(withTimeout: 1, tag: _socketTag)
-        _socketTag += 1    }
+        _socketTag += 1
     }
+}

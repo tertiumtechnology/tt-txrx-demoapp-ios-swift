@@ -97,9 +97,9 @@ class ScanViewController: UIViewController, UITableViewDataSource, UITableViewDe
         } else if (type == Core.TXRX_NOTIFICATION_SCAN_ERROR) {
             var error: NSError?
             error = notification.object as? NSError
-            
-            let alertView = UIAlertView(title: "Error", message: error?.localizedDescription, delegate: nil, cancelButtonTitle: "OK")
-            alertView.show()
+            let alertView = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
+            alertView.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in }))
+            self.present(alertView, animated: false, completion: nil)
         } else if (type == Core.TXRX_NOTIFICATION_SCAN_ENDED) {
             btnScan?.setTitle("SCAN", for: .normal)
         } else if (type == Core.TXRX_NOTIFICATION_DEVICE_FOUND) {
@@ -115,8 +115,9 @@ class ScanViewController: UIViewController, UITableViewDataSource, UITableViewDe
             error = notification.object as? NSError
             
             if error?.code == TxRxDeviceManagerErrors.ErrorCodes.ERROR_BLUETOOTH_NOT_READY_OR_LOST.rawValue {
-                let alertView = UIAlertView(title: "Error", message: error?.localizedDescription, delegate: nil, cancelButtonTitle: "OK")
-                alertView.show()
+                let alertView = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
+                alertView.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in }))
+                self.present(alertView, animated: false, completion: nil)
             }
         }
     }
@@ -135,8 +136,9 @@ class ScanViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBAction func btnScanPressed(_ sender: Any) {
         if canStartScan() == false {
-            let alertView = UIAlertView(title: "Error", message: "Unable to start scanning with connected devices. Disconnect all devices first!", delegate: nil, cancelButtonTitle: "OK")
-            alertView.show()
+            let alertView = UIAlertController(title: "Error", message: "Unable to start scanning with connected devices. Disconnect all devices first!", preferredStyle: .alert)
+            alertView.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in }))
+            self.present(alertView, animated: false, completion: nil)
             return;
         }
         
