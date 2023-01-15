@@ -57,7 +57,8 @@ class Core: TxRxDeviceScanProtocol, TxRxDeviceDataProtocol {
     static let TXRX_NOTIFICATION_DEVICE_DATA_RECEIVE_ERROR = "TxRxDeviceDataReceiveError"
     static let TXRX_NOTIFICATION_DEVICE_EVENT_DATA_RECEIVE_ERROR = "TxRxDeviceEventDataReceiveError"
     static let TXRX_NOTIFICATION_INTERNAL_ERROR = "TxRxDeviceInternalError"
-    
+    static let TXRX_NOTIFICATION_MODE_CHANGE_ERROR = "TxRxDeviceInternalError"
+
     // MARK: Core properties
     private let _notificationCenter = NotificationCenter.default
     private static let _sharedInstance = Core()
@@ -273,5 +274,21 @@ class Core: TxRxDeviceScanProtocol, TxRxDeviceDataProtocol {
     /// - parameter device: The device which was disconnected
     func deviceDisconnected(device: TxRxDevice) {
         _notificationCenter.post(name: NSNotification.Name(rawValue: Core.TXRX_NOTIFICATION_NAME), object: device, userInfo: ["type": Core.TXRX_NOTIFICATION_DEVICE_DISCONNECTED])
+    }
+    
+    func setModeError(device: TxRxLib.TxRxDevice, error: NSError) {
+        _notificationCenter.post(name: NSNotification.Name(rawValue: Core.TXRX_NOTIFICATION_NAME), object: device, userInfo: ["type": Core.TXRX_NOTIFICATION_MODE_CHANGE_ERROR])
+    }
+    
+    func setModeTimeout(device: TxRxLib.TxRxDevice) {
+        _notificationCenter.post(name: NSNotification.Name(rawValue: Core.TXRX_NOTIFICATION_NAME), object: device, userInfo: ["type": Core.TXRX_NOTIFICATION_MODE_CHANGE_ERROR])
+    }
+    
+    func deviceReadTimeout(device: TxRxLib.TxRxDevice) {
+        _notificationCenter.post(name: NSNotification.Name(rawValue: Core.TXRX_NOTIFICATION_NAME), object: device, userInfo: ["type": Core.TXRX_NOTIFICATION_DEVICE_DATA_RECEIVE_ERROR])
+    }
+    
+    func deviceWriteTimeout(device: TxRxLib.TxRxDevice) {
+        _notificationCenter.post(name: NSNotification.Name(rawValue: Core.TXRX_NOTIFICATION_NAME), object: device, userInfo: ["type": Core.TXRX_NOTIFICATION_DEVICE_DATA_SEND_ERROR])
     }
 }
